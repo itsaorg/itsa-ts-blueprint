@@ -1,0 +1,53 @@
+name: Bug report
+description: Report incorrect behavior or a regression
+title: '[Bug] '
+labels: ['bug']
+body:
+  - type: input
+    id: repo_id
+    attributes:
+      label: Repo ID
+      description: Catalog ID from MVP.md (e.g. R1, R23, A1)
+      placeholder: R1
+    validations:
+      required: true
+  - type: input
+    id: mvp_phase
+    attributes:
+      label: MVP phase
+      description: Phase where the bug was observed
+      placeholder: P1
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Package or release version
+      placeholder: 1.0.0
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: Node 22.12.0, OS, CI run URL, etc.

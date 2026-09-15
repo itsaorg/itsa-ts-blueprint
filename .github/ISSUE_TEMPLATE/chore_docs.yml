@@ -1,0 +1,49 @@
+name: Chore or docs
+description: Tooling, maintenance, documentation, or refactor work
+title: '[Chore] '
+labels: ['chore']
+body:
+  - type: input
+    id: repo_id
+    attributes:
+      label: Repo ID
+      description: Catalog ID from MVP.md (e.g. R0, R1, A1)
+      placeholder: R0
+    validations:
+      required: true
+  - type: input
+    id: mvp_phase
+    attributes:
+      label: MVP phase
+      description: Related phase gate if applicable
+      placeholder: P0
+    validations:
+      required: true
+  - type: dropdown
+    id: change_type
+    attributes:
+      label: Change type
+      options:
+        - Documentation
+        - Tooling / CI
+        - Refactor
+        - Dependency update
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What needs to change and why?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      placeholder: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+    validations:
+      required: true
