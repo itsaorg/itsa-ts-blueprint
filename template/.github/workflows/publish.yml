@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HUSKY: '0'
+      CI: 'true'
     permissions:
       contents: write
       id-token: write
@@ -23,10 +24,11 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
-          node-version: '22.12.0'
+          node-version: '24.21.0'
           cache: npm
           registry-url: https://registry.npmjs.org
-      - run: npm ci
+      - run: npm ci --ignore-scripts
+      - run: npm run build
       - name: Create release PR or publish
         id: changesets
         uses: changesets/action@v1
