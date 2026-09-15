@@ -1,0 +1,12 @@
+# Dev-only — never publish
+tests/
+scripts/
+template/
+config/
+.github/
+.husky/
+.changeset/
+docs/
+coverage/
+src/
+*.tgz
