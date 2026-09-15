@@ -58,6 +58,9 @@ try {
   }
 
   execSync('git init', { cwd: target, stdio: 'inherit' });
+  execSync('git add -A', { cwd: target, stdio: 'inherit' });
+  execSync('git add --renormalize .', { cwd: target, stdio: 'inherit' });
+  execSync('git reset --hard', { cwd: target, stdio: 'inherit' });
   execSync('npm install', { cwd: target, stdio: 'inherit' });
   execSync('npm run check', { cwd: target, stdio: 'inherit' });
 
