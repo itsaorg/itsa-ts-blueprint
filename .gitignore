@@ -146,7 +146,7 @@ vite.config.ts.timestamp-*
 docs/api/
 
 # Generated TypeScript declarations (mirrored at publish)
-types/
+/types/
 
 # Husky internals
 .husky/_
