@@ -1,6 +1,6 @@
 {
   "name": "@itsa/ts-blueprint",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Itsa TypeScript library blueprint and GitHub template for all platform repositories",
   "type": "module",
   "license": "Apache-2.0",
