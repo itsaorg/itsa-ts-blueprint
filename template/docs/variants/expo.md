@@ -31,4 +31,4 @@ npx tsc --noEmit   # if mobile tsconfig overlay added
 
 ## Strategy
 
-Publish shared types and clients from `src/` via the standard `@itsa/<package>` export map. Mobile UI stays in `app/` and does not alter the library `check` pipeline for core modules.
+Publish shared types and clients from `src/` via the standard `@itsaorg/<package>` export map. Mobile UI stays in `app/` and does not alter the library `check` pipeline for core modules.

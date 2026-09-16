@@ -51,6 +51,6 @@ jobs:
           else
             gh release create "${TAG}" \
               --repo "${{ github.repository }}" \
-              --title "${TAG} — @itsa/ts-blueprint" \
+              --title "${TAG} — @itsaorg/ts-blueprint" \
               --notes-file CHANGELOG.md
           fi

@@ -30,7 +30,7 @@ try {
       '--repo',
       'itsa-smoke-test',
       '--package',
-      '@itsa/smoke-test',
+      '@itsaorg/smoke-test',
       '--description',
       'Smoke test scaffold from itsa-ts-blueprint',
       '--repo-id',

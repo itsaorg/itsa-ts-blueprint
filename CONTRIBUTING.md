@@ -1,4 +1,4 @@
-# Contributing to @itsa/ts-blueprint
+# Contributing to @itsaorg/ts-blueprint
 
 This document is the contribution standard inherited by every Itsa platform repository scaffolded from this blueprint. Follow it end-to-end for human and AI agent work.
 
