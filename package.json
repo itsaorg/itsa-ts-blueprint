@@ -1,5 +1,5 @@
 {
-  "name": "@itsa/ts-blueprint",
+  "name": "@itsaorg/ts-blueprint",
   "version": "1.0.0",
   "description": "Itsa TypeScript library blueprint and GitHub template for all platform repositories",
   "type": "module",
