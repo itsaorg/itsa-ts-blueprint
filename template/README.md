@@ -1,229 +1,89 @@
 # **PACKAGE_NAME**
 
-Frozen TypeScript library toolchain and GitHub template for all Itsa platform repositories (**REPO_ID**). Downstream repos substitute metadata tokens only — no ESLint, TypeScript, Vitest, Husky, or CI reconfiguration.
+TypeScript library blueprint scaffolded from [itsa-ts-blueprint](https://github.com/itsaorg/itsa-ts-blueprint). Toolchain configs live in `config/` — substitute metadata tokens only.
 
-## Purpose
+---
 
-- **Configure once** in R0
-- **Copy via GitHub template** for R1–R32 and A1
-- **Substitute** template placeholders with repo metadata
-- **Verify** with `npm install && npm run check`
+## Table of Contents
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the full contribution SOP and [MVP.md](../MVP.md) for the platform catalog.
+- [Quickstart](#quickstart)
+- [Usage — install from npm](#usage--install-from-npm)
+- [Tutorials](#tutorials)
+- [Prerequisites](#prerequisites)
+- [npm scripts reference](#npm-scripts-reference)
+- [License](#license)
 
-## Prerequisites
+---
 
-| Requirement              | Verify             |
-| ------------------------ | ------------------ |
-| Node.js 22.12.0          | `node -v`          |
-| npm                      | `npm -v`           |
-| GitHub CLI               | `gh auth status`   |
-| git-flow (AVH)           | `git flow version` |
-| npm org access (publish) | `npm whoami`       |
+## Quickstart
 
 ```bash
-nvm use
-# or: fnm use / volta install node@22.12.0
-```
-
-## Quick start (Human Step 0 — downstream repos)
-
-Create a new library repo from this template:
-
-```bash
-gh repo create itsaorg/itsa-example --template __GITHUB_ORG__/__REPO_NAME__ --private=false
-git clone git@github.com:itsaorg/itsa-example.git udawg-game-bot-refactor/itsa-example
-cd udawg-game-bot-refactor/itsa-example
-git flow init -d
-git checkout develop
-```
-
-Substitute tokens (if not done by template variables):
-
-```bash
-node scripts/substitute-names.mjs \
-  --repo itsa-example \
-  --package @itsaorg/example \
-  --description "Example Itsa library" \
-  --repo-id R99 \
-  --phase P1 \
-  --out .
-```
-
-Install and verify:
-
-```bash
+git clone git@github.com:__GITHUB_ORG__/__REPO_NAME__.git
+cd __REPO_NAME__
 npm install
 npm run check
 ```
 
-## Git Flow cheat sheet
+Optional: `fnm use` or `nvm use` reads [`.nvmrc`](.nvmrc) (`24.21.0`).
 
-| Branch type | Start                                   | Finish                                   |
-| ----------- | --------------------------------------- | ---------------------------------------- |
-| Feature     | `git flow feature start <issue>-<slug>` | `git flow feature finish <issue>-<slug>` |
-| Bugfix      | `git flow bugfix start <issue>-<slug>`  | `git flow bugfix finish <issue>-<slug>`  |
-| Release     | `git flow release start <version>`      | `git flow release finish <version>`      |
-| Hotfix      | `git flow hotfix start <version>`       | `git flow hotfix finish <version>`       |
-| Support     | `git flow support start <name> <base>`  | `git flow support finish <name>`         |
+---
 
-Long-lived branches: `main` (production), `develop` (integration).
+## Usage — install from npm
+
+```bash
+npm install __PACKAGE_NAME__
+```
+
+```typescript
+import { getBlueprintHealth } from '__PACKAGE_NAME__';
+```
+
+Package page: `https://www.npmjs.com/package/__PACKAGE_NAME__`
+
+---
+
+## Tutorials
+
+| Topic                  | Where to read                                                                            |
+| ---------------------- | ---------------------------------------------------------------------------------------- |
+| Issue-first workflow   | [CONTRIBUTING § 2](CONTRIBUTING.md#2-issue-first-workflow)                               |
+| Git Flow branches      | [CONTRIBUTING § 3](CONTRIBUTING.md#3-git-flow-branch-usage)                              |
+| Changesets & changelog | [CONTRIBUTING § 5](CONTRIBUTING.md#5-changesets-changelog-and-release-flow)              |
+| Staged npm publish     | [CONTRIBUTING § 7](CONTRIBUTING.md#7-staged-npm-publish-approval-sop)                    |
+| Local development      | [CONTRIBUTING § 8](CONTRIBUTING.md#8-local-quality-gate)                                 |
+| npm publish auth setup | [CONTRIBUTING § 7.1](CONTRIBUTING.md#71-maintainer-setup-trusted-publisher--stage-token) |
+
+---
+
+## Prerequisites
+
+| Requirement       | Verify    |
+| ----------------- | --------- |
+| Node.js ≥ 24.21.0 | `node -v` |
+| npm               | `npm -v`  |
+
+CI runs a single Node **24.21.0** job (`check (Node 24.21.0)`).
+
+---
 
 ## npm scripts reference
 
-Every script below is inherited unchanged by scaffolded repos. Toolchain configs live in `config/`.
-
-### `build`
-
-Compile ESM to `dist/` and declarations to `types/`.
-
-```bash
-npm run build
-```
-
-### `clean`
-
-Remove build, coverage, and generated docs artifacts.
-
-```bash
-npm run clean
-```
-
-### `typecheck`
-
-TypeScript check without emit.
-
-```bash
-npm run typecheck
-```
-
-### `lint` / `lint:fix`
-
-Type-aware ESLint (`config/eslint.config.js`).
-
-```bash
-npm run lint
-npm run lint:fix
-```
-
-### `format` / `format:check`
-
-Prettier write or check (`config/.prettierrc.json`).
-
-```bash
-npm run format
-npm run format:check
-```
-
-### `test` / `test:watch` / `test:coverage`
-
-Vitest unit and integration suites (`config/vitest.config.ts`). Coverage enforces 80% thresholds.
-
-```bash
-npm run test
-npm run test:watch
-npm run test:coverage
-```
-
-### `test:consumer`
-
-ESM consumer import test (`config/vitest.consumer.config.ts`).
-
-```bash
-npm run build
-npm run test:consumer
-```
-
-### `docs`
-
-Generate API documentation to `docs/api/` (`config/typedoc.json`, gitignored).
-
-```bash
-npm run docs
-```
-
-### `check:layout`
-
-Enforce one principal export per source file.
-
-```bash
-npm run check:layout
-```
-
-### `check:types-mirror`
-
-Verify `types/` declarations exist and match public API after build.
-
-```bash
-npm run build
-npm run check:types-mirror
-```
-
-### `check:tarball`
-
-Pack and inspect npm tarball; reject tests/scripts/config/.github in published files.
-
-```bash
-npm run check:tarball
-```
-
-### `check`
-
-Full local/CI gate (matches Husky `pre-push`).
+| Script                                                | Purpose                                              |
+| ----------------------------------------------------- | ---------------------------------------------------- |
+| `build`                                               | Compile ESM to `dist/` and declarations to `types/`  |
+| `check`                                               | Full local/CI gate                                   |
+| `changeset` / `changeset:version` / `changeset:stage` | Release management (CI stages via `changeset:stage`) |
 
 ```bash
 npm run check
 ```
 
-### `prepare`
+See [CONTRIBUTING.md](CONTRIBUTING.md) for Git Flow, changesets, and staged publish SOP.
 
-Install Husky hooks (runs automatically on `npm install`).
-
-```bash
-npm run prepare
-```
-
-### `prepublishOnly`
-
-Runs `npm run check` before publish.
-
-```bash
-npm publish --dry-run
-```
-
-### Changesets
-
-```bash
-npm run changeset
-npm run changeset:version
-npm run changeset:publish
-```
-
-## Husky hooks
-
-| Hook         | Runs                              |
-| ------------ | --------------------------------- |
-| `pre-commit` | lint-staged (ESLint + Prettier)   |
-| `commit-msg` | Commitlint (Conventional Commits) |
-| `pre-push`   | `npm run check`                   |
-
-Details: [CONTRIBUTING.md § Husky hooks](CONTRIBUTING.md#10-husky-hooks-and-git-flow-coexistence).
-
-## Variants
-
-Non-library repos (Next.js, Electron, Expo) add overlays documented in [docs/variants/](docs/variants/). Variant configs extend files in `config/`.
-
-## Changesets summary
-
-1. `npx changeset` after meaningful package changes
-2. Merge Version PR on `develop` (updates `CHANGELOG.md` automatically)
-3. `git flow release` to `main`
-4. CI publishes with npm provenance
-
-## Changelog
-
-See [CHANGELOG.md](CHANGELOG.md). Contributors use `npx changeset`; do not hand-edit release sections.
+---
 
 ## License
 
 Apache-2.0 — see [LICENSE](LICENSE).
+
+Release history: [CHANGELOG.md](CHANGELOG.md).

@@ -1,10 +1,12 @@
 ## Summary
 
-<!-- What changed and why? Link MVP task ID when applicable. -->
+<!-- What changed and why? -->
 
 ## Linked issue
 
 Fixes #
+
+<!-- Required: PRs must link an issue so it auto-closes on merge. -->
 
 ## Change type
 
@@ -12,11 +14,6 @@ Fixes #
 - [ ] Bug fix
 - [ ] Chore / docs
 - [ ] Breaking change
-
-## Repo metadata
-
-- **Repo ID:**
-- **MVP phase:**
 
 ## Test evidence
 
@@ -34,10 +31,16 @@ npm run check
 
 ## Checklist
 
+- [ ] `Fixes #N` references a real issue
 - [ ] Conventional commit messages used
 - [ ] Conventional commit type matches changeset bump (`feat` → minor, `fix` → patch, BREAKING → major)
 - [ ] Husky hooks were not bypassed (or bypass is documented below)
 - [ ] Acceptance criteria from the issue are met
+
+## Optional metadata
+
+- **Repo ID:**
+- **Phase:**
 
 ## Agent / hook notes
 

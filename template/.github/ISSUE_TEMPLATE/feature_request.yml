@@ -6,19 +6,15 @@ body:
   - type: input
     id: repo_id
     attributes:
-      label: Repo ID
-      description: Catalog ID from MVP.md (e.g. R1, R23, A1)
+      label: Repo ID (optional)
+      description: Catalog ID if your org uses one
       placeholder: R1
-    validations:
-      required: true
   - type: input
     id: mvp_phase
     attributes:
-      label: MVP phase
-      description: Target phase gate (e.g. P1, P7)
+      label: Phase (optional)
+      description: Target phase gate if applicable
       placeholder: P1
-    validations:
-      required: true
   - type: textarea
     id: problem
     attributes:
@@ -47,4 +43,4 @@ body:
     id: notes
     attributes:
       label: Additional context
-      description: Links, diagrams, dependencies, or MVP task references
+      description: Links, diagrams, or dependencies
