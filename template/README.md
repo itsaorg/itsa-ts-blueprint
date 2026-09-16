@@ -43,7 +43,7 @@ Substitute tokens (if not done by template variables):
 ```bash
 node scripts/substitute-names.mjs \
   --repo itsa-example \
-  --package @itsa/example \
+  --package @itsaorg/example \
   --description "Example Itsa library" \
   --repo-id R99 \
   --phase P1 \

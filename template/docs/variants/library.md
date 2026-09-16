@@ -1,6 +1,6 @@
 # Library variant (default)
 
-The default blueprint targets **publishable TypeScript libraries** under the `@itsa` npm scope.
+The default blueprint targets **publishable TypeScript libraries** under the `@itsaorg` npm scope.
 
 ## What you get
 

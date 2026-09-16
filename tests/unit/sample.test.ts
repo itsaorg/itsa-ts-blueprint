@@ -5,7 +5,7 @@ describe('getBlueprintHealth', () => {
   it('returns ok status', () => {
     expect(getBlueprintHealth()).toEqual({
       status: 'ok',
-      package: '@itsa/ts-blueprint',
+      package: '@itsaorg/ts-blueprint',
     });
   });
 });

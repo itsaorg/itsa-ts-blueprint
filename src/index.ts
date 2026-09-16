@@ -1,11 +1,11 @@
 export type BlueprintHealth = {
   readonly status: 'ok';
-  readonly package: '@itsa/ts-blueprint';
+  readonly package: '@itsaorg/ts-blueprint';
 };
 
 export function getBlueprintHealth(): BlueprintHealth {
   return {
     status: 'ok',
-    package: '@itsa/ts-blueprint',
+    package: '@itsaorg/ts-blueprint',
   };
 }
