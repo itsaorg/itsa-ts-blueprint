@@ -91,7 +91,7 @@ const replacements = {
   __GITHUB_ORG__: 'itsaorg',
   __REPO_ID__: repoId,
   __MVP_PHASE__: phase,
-  __NODE_ENGINE__: '>=22.12.0',
+  __NODE_ENGINE__: '>=24.21.0',
 };
 
 mkdirSync(out, { recursive: true });
