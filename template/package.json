@@ -41,7 +41,8 @@
     "prepublishOnly": "npm run build",
     "changeset": "changeset",
     "changeset:version": "changeset version",
-    "changeset:publish": "changeset publish"
+    "changeset:publish": "changeset publish",
+    "changeset:stage": "node scripts/stage-publish.mjs"
   },
   "lint-staged": {
     "*.{ts,js,mjs,cjs}": [

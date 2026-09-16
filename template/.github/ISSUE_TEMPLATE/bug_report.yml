@@ -6,19 +6,15 @@ body:
   - type: input
     id: repo_id
     attributes:
-      label: Repo ID
-      description: Catalog ID from MVP.md (e.g. R1, R23, A1)
+      label: Repo ID (optional)
+      description: Catalog ID if your org uses one
       placeholder: R1
-    validations:
-      required: true
   - type: input
     id: mvp_phase
     attributes:
-      label: MVP phase
-      description: Phase where the bug was observed
+      label: Phase (optional)
+      description: Related phase gate if applicable
       placeholder: P1
-    validations:
-      required: true
   - type: textarea
     id: expected
     attributes:
@@ -50,4 +46,4 @@ body:
     id: environment
     attributes:
       label: Environment
-      placeholder: Node 22.12.0, OS, CI run URL, etc.
+      placeholder: Node 24.21.0, OS, CI run URL, etc.

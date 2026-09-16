@@ -5,7 +5,7 @@
   "type": "module",
   "license": "Apache-2.0",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=24.21.0"
   },
   "exports": {
     ".": {
@@ -42,7 +42,8 @@
     "smoke:scaffold": "node scripts/smoke-scaffold.mjs",
     "changeset": "changeset",
     "changeset:version": "changeset version",
-    "changeset:publish": "changeset publish"
+    "changeset:publish": "changeset publish",
+    "changeset:stage": "node scripts/stage-publish.mjs"
   },
   "lint-staged": {
     "*.{ts,js,mjs,cjs}": [
