@@ -23,7 +23,7 @@ Keep the entire library toolchain:
 
 ## Substitution
 
-Use the same template placeholders as the library variant. Package name typically remains `@itsa/<repo-name>` for shared exports; the Next app may use a private `"name"` field or a monorepo layout if multiple packages are extracted later.
+Use the same template placeholders as the library variant. Package name typically remains `@itsaorg/<repo-name>` for shared exports; the Next app may use a private `"name"` field or a monorepo layout if multiple packages are extracted later.
 
 ## Verification
 

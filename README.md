@@ -1,4 +1,4 @@
-# 📦 @itsa/ts-blueprint
+# 📦 @itsaorg/ts-blueprint
 
 Frozen TypeScript library toolchain and GitHub template for all Itsa platform repositories (R0). Downstream repos substitute metadata tokens only — no ESLint, TypeScript, Vitest, Husky, or CI reconfiguration.
 
@@ -6,7 +6,7 @@ Frozen TypeScript library toolchain and GitHub template for all Itsa platform re
 
 ## 📑 Table of Contents
 
-- [📦 @itsa/ts-blueprint](#-itsats-blueprint)
+- [📦 @itsaorg/ts-blueprint](#-itsaorgts-blueprint)
   - [📑 Table of Contents](#-table-of-contents)
   - [🎯 Purpose](#-purpose)
   - [📁 Repository layout](#-repository-layout)
@@ -105,7 +105,7 @@ Substitute tokens (if not done by template variables):
 ```bash
 node scripts/substitute-names.mjs \
   --repo itsa-example \
-  --package @itsa/example \
+  --package @itsaorg/example \
   --description "Example Itsa library" \
   --repo-id R99 \
   --phase P1 \
@@ -274,7 +274,7 @@ npm run smoke:scaffold
 ```bash
 node scripts/substitute-names.mjs \
   --repo itsa-dbms-base \
-  --package @itsa/dbms-base \
+  --package @itsaorg/dbms-base \
   --description "Itsa DBMS base contracts" \
   --repo-id R1 \
   --phase P1 \
