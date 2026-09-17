@@ -6,59 +6,59 @@ This repository is currently at **seed stage**: only this guide, `LICENSE`, and 
 
 ---
 
-## Table of contents
+## ⫶☰ Table Of Contents
 
 - [@itsaorg/ts-blueprint](#itsaorgts-blueprint)
-  - [Table of contents](#table-of-contents)
+  - [⫶☰ Table Of Contents](#-table-of-contents)
   - [Verified toolchain baseline](#verified-toolchain-baseline)
   - [Part 1 — How we built this template repository](#part-1--how-we-built-this-template-repository)
-  - [P1.0 Prerequisites](#p10-prerequisites)
-    - [P1.0.1 — Install Git](#p101--install-git)
-    - [P1.0.2 — Install Node.js 24.21.0](#p102--install-nodejs-24210)
-    - [P1.0.3 — Install git-flow AVH](#p103--install-git-flow-avh)
-  - [P1.1 GitHub — org and base repo](#p11-github--org-and-base-repo)
-  - [P1.2 GitHub — template readiness](#p12-github--template-readiness)
-    - [P1.2.1 — Issue and PR templates](#p121--issue-and-pr-templates)
-    - [P1.2.2 — CI workflow](#p122--ci-workflow)
-    - [P1.2.3 — Publish workflow](#p123--publish-workflow)
-    - [P1.2.4 — Branch protection (after first push)](#p124--branch-protection-after-first-push)
-  - [P1.3 Git — local init and git-flow](#p13-git--local-init-and-git-flow)
-  - [P1.4 npm — package foundation](#p14-npm--package-foundation)
-  - [P1.5 TypeScript](#p15-typescript)
-  - [P1.6 ESLint and Prettier](#p16-eslint-and-prettier)
-  - [P1.7 Vitest](#p17-vitest)
-  - [P1.8 Husky and Commitlint](#p18-husky-and-commitlint)
-  - [P1.9 Changesets and CHANGELOG](#p19-changesets-and-changelog)
-  - [P1.10 TypeDoc](#p110-typedoc)
-  - [P1.11 Quality gate scripts](#p111-quality-gate-scripts)
-  - [P1.12 npmjs — org and Trusted Publisher](#p112-npmjs--org-and-trusted-publisher)
-    - [P1.12.1 — npm account and org access](#p1121--npm-account-and-org-access)
-    - [P1.12.2 — Trusted Publisher (recommended)](#p1122--trusted-publisher-recommended)
-    - [P1.12.3 — GitHub repository secret (fallback)](#p1123--github-repository-secret-fallback)
-    - [P1.12.4 — Publish flow](#p1124--publish-flow)
-  - [P1.13 Final verification](#p113-final-verification)
-  - [P1.14 Enable template repository](#p114-enable-template-repository)
+    - [P1.0 Prerequisites](#p10-prerequisites)
+      - [P1.0.1 — Install Git](#p101--install-git)
+      - [P1.0.2 — Install Node.js 24.21.0](#p102--install-nodejs-24210)
+      - [P1.0.3 — Install git-flow AVH](#p103--install-git-flow-avh)
+    - [P1.1 GitHub — org and base repo](#p11-github--org-and-base-repo)
+    - [P1.2 GitHub — template readiness](#p12-github--template-readiness)
+      - [P1.2.1 — Issue and PR templates](#p121--issue-and-pr-templates)
+      - [P1.2.2 — CI workflow](#p122--ci-workflow)
+      - [P1.2.3 — Publish workflow](#p123--publish-workflow)
+      - [P1.2.4 — Branch protection (after first push)](#p124--branch-protection-after-first-push)
+    - [P1.3 Git — local init and git-flow](#p13-git--local-init-and-git-flow)
+    - [P1.4 npm — package foundation](#p14-npm--package-foundation)
+    - [P1.5 TypeScript](#p15-typescript)
+    - [P1.6 ESLint and Prettier](#p16-eslint-and-prettier)
+    - [P1.7 Vitest](#p17-vitest)
+    - [P1.8 Husky and Commitlint](#p18-husky-and-commitlint)
+    - [P1.9 Changesets and CHANGELOG](#p19-changesets-and-changelog)
+    - [P1.10 TypeDoc](#p110-typedoc)
+    - [P1.11 Quality gate scripts](#p111-quality-gate-scripts)
+    - [P1.12 npmjs — org and Trusted Publisher](#p112-npmjs--org-and-trusted-publisher)
+      - [P1.12.1 — npm account and org access](#p1121--npm-account-and-org-access)
+      - [P1.12.2 — Trusted Publisher (recommended)](#p1122--trusted-publisher-recommended)
+      - [P1.12.3 — GitHub repository secret (fallback)](#p1123--github-repository-secret-fallback)
+      - [P1.12.4 — Publish flow](#p1124--publish-flow)
+    - [P1.13 Final verification](#p113-final-verification)
+    - [P1.14 Enable template repository](#p114-enable-template-repository)
   - [Part 2 — How to use this template for your repository](#part-2--how-to-use-this-template-for-your-repository)
-  - [P2.0 Prerequisites](#p20-prerequisites)
-  - [P2.1 GitHub — create from template](#p21-github--create-from-template)
-    - [Step 1 — Open the blueprint repository](#step-1--open-the-blueprint-repository)
-    - [Step 2 — Click Use this template](#step-2--click-use-this-template)
-    - [Step 3 — Choose Create a new repository](#step-3--choose-create-a-new-repository)
-    - [Step 4 — Configure owner, name, and visibility](#step-4--configure-owner-name-and-visibility)
-    - [Step 5 — Confirm the new repository](#step-5--confirm-the-new-repository)
-  - [P2.2 Clone and install](#p22-clone-and-install)
-  - [P2.3 Manual rename checklist](#p23-manual-rename-checklist)
-  - [P2.4 Git and GitHub configuration](#p24-git-and-github-configuration)
-    - [P2.4.1 — Initialize git-flow (if not already configured)](#p241--initialize-git-flow-if-not-already-configured)
-    - [P2.4.2 — Ensure develop exists on GitHub](#p242--ensure-develop-exists-on-github)
-    - [P2.4.3 — Branch protection (GitHub web UI)](#p243--branch-protection-github-web-ui)
-  - [P2.5 npmjs setup (if publishing)](#p25-npmjs-setup-if-publishing)
-    - [P2.5.1 — npm login and org access](#p251--npm-login-and-org-access)
-    - [P2.5.2 — Trusted Publisher for your repo](#p252--trusted-publisher-for-your-repo)
-    - [P2.5.3 — First publish checklist](#p253--first-publish-checklist)
-  - [P2.6 Verify each tool](#p26-verify-each-tool)
-  - [P2.7 Full quality gate](#p27-full-quality-gate)
-  - [P2.8 Repository layout reference](#p28-repository-layout-reference)
+    - [P2.0 Prerequisites](#p20-prerequisites)
+    - [P2.1 GitHub — create from template](#p21-github--create-from-template)
+      - [Step 1 — Open the blueprint repository](#step-1--open-the-blueprint-repository)
+      - [Step 2 — Click Use this template](#step-2--click-use-this-template)
+      - [Step 3 — Choose Create a new repository](#step-3--choose-create-a-new-repository)
+      - [Step 4 — Configure owner, name, and visibility](#step-4--configure-owner-name-and-visibility)
+      - [Step 5 — Confirm the new repository](#step-5--confirm-the-new-repository)
+    - [P2.2 Clone and install](#p22-clone-and-install)
+    - [P2.3 Manual rename checklist](#p23-manual-rename-checklist)
+    - [P2.4 Git and GitHub configuration](#p24-git-and-github-configuration)
+      - [P2.4.1 — Initialize git-flow (if not already configured)](#p241--initialize-git-flow-if-not-already-configured)
+      - [P2.4.2 — Ensure develop exists on GitHub](#p242--ensure-develop-exists-on-github)
+      - [P2.4.3 — Branch protection (GitHub web UI)](#p243--branch-protection-github-web-ui)
+    - [P2.5 npmjs setup (if publishing)](#p25-npmjs-setup-if-publishing)
+      - [P2.5.1 — npm login and org access](#p251--npm-login-and-org-access)
+      - [P2.5.2 — Trusted Publisher for your repo](#p252--trusted-publisher-for-your-repo)
+      - [P2.5.3 — First publish checklist](#p253--first-publish-checklist)
+    - [P2.6 Verify each tool](#p26-verify-each-tool)
+    - [P2.7 Full quality gate](#p27-full-quality-gate)
+    - [P2.8 Repository layout reference](#p28-repository-layout-reference)
   - [License](#license)
 
 ---
@@ -96,11 +96,11 @@ Each step follows: **Goal → Action → Verify → Expected output**.
 
 ---
 
-## P1.0 Prerequisites
+### P1.0 Prerequisites
 
 Install and verify every machine tool before creating the repository.
 
-### P1.0.1 — Install Git
+#### P1.0.1 — Install Git
 
 **Action:** Install [Git for Windows](https://git-scm.com/download/win). Open Git Bash.
 
@@ -118,7 +118,7 @@ git version 2.55.0.windows.5
 
 (or newer)
 
-### P1.0.2 — Install Node.js 24.21.0
+#### P1.0.2 — Install Node.js 24.21.0
 
 **Action:** Install Node **24.21.0**. Create `.nvmrc` at repo root with content `24.21.0`.
 
@@ -136,7 +136,7 @@ v24.21.0
 11.9.0
 ```
 
-### P1.0.3 — Install git-flow AVH
+#### P1.0.3 — Install git-flow AVH
 
 **Action:** Install [git-flow AVH](https://github.com/petervanderdoes/gitflow-avh/wiki/Installation).
 
@@ -154,7 +154,7 @@ git flow version
 
 ---
 
-## P1.1 GitHub — org and base repo
+### P1.1 GitHub — org and base repo
 
 **Goal:** Create the empty GitHub repository under the `itsaorg` organization.
 
@@ -173,11 +173,11 @@ git flow version
 
 ---
 
-## P1.2 GitHub — template readiness
+### P1.2 GitHub — template readiness
 
 **Goal:** Prepare GitHub settings, issue/PR templates, and CI workflows. Enable the **Template repository** flag only after Part 1 is complete (see [P1.14](#p114-enable-template-repository)).
 
-### P1.2.1 — Issue and PR templates
+#### P1.2.1 — Issue and PR templates
 
 Create these files locally (commit in later steps):
 
@@ -187,7 +187,7 @@ Create these files locally (commit in later steps):
 
 **Verify:** After push, **New issue** on GitHub shows the templates.
 
-### P1.2.2 — CI workflow
+#### P1.2.2 — CI workflow
 
 Create `.github/workflows/ci.yml`:
 
@@ -214,7 +214,7 @@ jobs:
       - run: npm run check
 ```
 
-### P1.2.3 — Publish workflow
+#### P1.2.3 — Publish workflow
 
 Create `.github/workflows/publish.yml` with:
 
@@ -224,7 +224,7 @@ Create `.github/workflows/publish.yml` with:
 - `permissions.id-token: write` for npm Trusted Publisher (OIDC)
 - `NPM_TOKEN` secret for fallback publish paths
 
-### P1.2.4 — Branch protection (after first push)
+#### P1.2.4 — Branch protection (after first push)
 
 **Action (GitHub web UI):**
 
@@ -240,7 +240,7 @@ Create `.github/workflows/publish.yml` with:
 
 ---
 
-## P1.3 Git — local init and git-flow
+### P1.3 Git — local init and git-flow
 
 **Goal:** Initialize local repo, seed files, and git-flow branches.
 
@@ -281,7 +281,7 @@ git flow version
 
 ---
 
-## P1.4 npm — package foundation
+### P1.4 npm — package foundation
 
 **Goal:** Create `package.json` for a scoped public library.
 
@@ -339,7 +339,7 @@ npm pkg get name engines
 
 ---
 
-## P1.5 TypeScript
+### P1.5 TypeScript
 
 **Goal:** Source in `src/`, compiled JS in `dist/`, declarations in `types/`.
 
@@ -398,7 +398,7 @@ ls dist/ types/
 
 ---
 
-## P1.6 ESLint and Prettier
+### P1.6 ESLint and Prettier
 
 **Goal:** Lint and format with configs under `config/`.
 
@@ -434,7 +434,7 @@ npm run format:check
 
 ---
 
-## P1.7 Vitest
+### P1.7 Vitest
 
 **Goal:** Unit tests, coverage gate, and consumer import smoke test.
 
@@ -467,7 +467,7 @@ npm run build && npm run test:consumer
 
 ---
 
-## P1.8 Husky and Commitlint
+### P1.8 Husky and Commitlint
 
 **Goal:** Enforce staged lint/format, conventional commits, and pre-push quality gate.
 
@@ -500,7 +500,7 @@ npm install
 
 ---
 
-## P1.9 Changesets and CHANGELOG
+### P1.9 Changesets and CHANGELOG
 
 **Goal:** Semantic versioning and automated changelog.
 
@@ -537,7 +537,7 @@ Creates a changeset file under `.changeset/`.
 
 ---
 
-## P1.10 TypeDoc
+### P1.10 TypeDoc
 
 **Goal:** Generate API reference to **`docs/api/` only** — not under `assets/readme/`.
 
@@ -577,7 +577,7 @@ ls docs/api/
 
 ---
 
-## P1.11 Quality gate scripts
+### P1.11 Quality gate scripts
 
 **Goal:** Composite `npm run check` matching CI and Husky pre-push.
 
@@ -613,11 +613,11 @@ All steps must pass locally before pushing.
 
 ---
 
-## P1.12 npmjs — org and Trusted Publisher
+### P1.12 npmjs — org and Trusted Publisher
 
 **Goal:** Publish `@itsaorg/ts-blueprint` to npm with provenance via GitHub Actions OIDC.
 
-### P1.12.1 — npm account and org access
+#### P1.12.1 — npm account and org access
 
 **Action (npmjs.com web UI):**
 
@@ -630,7 +630,7 @@ All steps must pass locally before pushing.
 npm whoami
 ```
 
-### P1.12.2 — Trusted Publisher (recommended)
+#### P1.12.2 — Trusted Publisher (recommended)
 
 **Action (npmjs.com web UI):**
 
@@ -646,14 +646,14 @@ npm whoami
 
 **Screenshot path:** `assets/readme/part1/npmjs/01-trusted-publisher.png`
 
-### P1.12.3 — GitHub repository secret (fallback)
+#### P1.12.3 — GitHub repository secret (fallback)
 
 **Action (GitHub web UI):**
 
 1. **Settings → Secrets and variables → Actions**.
 2. Add `NPM_TOKEN` — automation token with publish access to `@itsaorg`.
 
-### P1.12.4 — Publish flow
+#### P1.12.4 — Publish flow
 
 **Action:**
 
@@ -666,7 +666,7 @@ npm whoami
 
 ---
 
-## P1.13 Final verification
+### P1.13 Final verification
 
 **Goal:** Confirm the rebuilt repo is production-ready.
 
@@ -680,7 +680,7 @@ npm whoami
 
 ---
 
-## P1.14 Enable template repository
+### P1.14 Enable template repository
 
 **Goal:** Allow others to create repos from this blueprint.
 
@@ -709,7 +709,7 @@ When Part 1 is complete, this repo matches what Part 2 assumes.
 
 ---
 
-## P2.0 Prerequisites
+### P2.0 Prerequisites
 
 Install the same machine tools as [Verified toolchain baseline](#verified-toolchain-baseline).
 
@@ -724,29 +724,29 @@ git flow version   # AVH Edition
 
 ---
 
-## P2.1 GitHub — create from template
+### P2.1 GitHub — create from template
 
 **Goal:** Create your own repository from the blueprint.
 
-### Step 1 — Open the blueprint repository
+#### Step 1 — Open the blueprint repository
 
 Go to: `https://github.com/itsaorg/ts-blueprint`
 
 ![Step 1 — Open itsaorg/ts-blueprint](assets/readme/part2/github-template/step-01-open-repo.png)
 
-### Step 2 — Click Use this template
+#### Step 2 — Click Use this template
 
 Click the green **Use this template** button (not **Fork**).
 
 ![Step 2 — Use this template button](assets/readme/part2/github-template/step-02-use-template-button.png)
 
-### Step 3 — Choose Create a new repository
+#### Step 3 — Choose Create a new repository
 
 Select **Create a new repository** from the dropdown.
 
 ![Step 3 — Create a new repository](assets/readme/part2/github-template/step-03-create-dialog.png)
 
-### Step 4 — Configure owner, name, and visibility
+#### Step 4 — Configure owner, name, and visibility
 
 | Field | Example |
 | --- | --- |
@@ -758,7 +758,7 @@ Click **Create repository**.
 
 ![Step 4 — Owner, name, visibility](assets/readme/part2/github-template/step-04-owner-name-visibility.png)
 
-### Step 5 — Confirm the new repository
+#### Step 5 — Confirm the new repository
 
 You should land on your new repo's home page with a **Code** button.
 
@@ -768,7 +768,7 @@ You should land on your new repo's home page with a **Code** button.
 
 ---
 
-## P2.2 Clone and install
+### P2.2 Clone and install
 
 **Goal:** Local development environment with correct Node version and dependencies.
 
@@ -800,7 +800,7 @@ npm run typecheck
 
 ---
 
-## P2.3 Manual rename checklist
+### P2.3 Manual rename checklist
 
 **Goal:** Replace blueprint identifiers with your package name.
 
@@ -827,24 +827,24 @@ grep -r "ts-blueprint" src/ README.md || echo "No stale references"
 
 ---
 
-## P2.4 Git and GitHub configuration
+### P2.4 Git and GitHub configuration
 
 **Goal:** git-flow branches, remote tracking, and branch protection.
 
-### P2.4.1 — Initialize git-flow (if not already configured)
+#### P2.4.1 — Initialize git-flow (if not already configured)
 
 ```bash
 git flow init -d
 ```
 
-### P2.4.2 — Ensure develop exists on GitHub
+#### P2.4.2 — Ensure develop exists on GitHub
 
 ```bash
 git checkout develop
 git push -u origin develop
 ```
 
-### P2.4.3 — Branch protection (GitHub web UI)
+#### P2.4.3 — Branch protection (GitHub web UI)
 
 1. **Settings → Branches**.
 2. Protect `main` and `develop`:
@@ -858,13 +858,13 @@ git push -u origin develop
 
 ---
 
-## P2.5 npmjs setup (if publishing)
+### P2.5 npmjs setup (if publishing)
 
 **Goal:** Publish your scoped package under your org with Trusted Publisher.
 
 Skip this section if you are not publishing to npm.
 
-### P2.5.1 — npm login and org access
+#### P2.5.1 — npm login and org access
 
 ```bash
 npm login
@@ -873,7 +873,7 @@ npm whoami
 
 Confirm you can publish to your scope (e.g. `@itsaorg`).
 
-### P2.5.2 — Trusted Publisher for your repo
+#### P2.5.2 — Trusted Publisher for your repo
 
 **Action (npmjs.com web UI):**
 
@@ -888,7 +888,7 @@ Confirm you can publish to your scope (e.g. `@itsaorg`).
 
 **Screenshot path:** `assets/readme/part2/npmjs/01-trusted-publisher.png`
 
-### P2.5.3 — First publish checklist
+#### P2.5.3 — First publish checklist
 
 - [ ] `package.json` `name` is your scoped package
 - [ ] `publishConfig.provenance: true`
@@ -905,7 +905,7 @@ npm pack --dry-run
 
 ---
 
-## P2.6 Verify each tool
+### P2.6 Verify each tool
 
 **Goal:** Confirm every tool in the quality pipeline works in your repo.
 
@@ -934,7 +934,7 @@ Run each command in order (matches `npm run check`):
 
 ---
 
-## P2.7 Full quality gate
+### P2.7 Full quality gate
 
 **Goal:** One command validates everything locally — same gate as CI and Husky pre-push.
 
@@ -950,7 +950,7 @@ This runs: lint → format check → typecheck → test coverage → build → l
 
 ---
 
-## P2.8 Repository layout reference
+### P2.8 Repository layout reference
 
 **Goal:** Understand where source, types, and build output live.
 
