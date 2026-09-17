@@ -15,6 +15,7 @@ const REQUIRED_PATHS = [
   '.husky/pre-push',
   'package.json',
   'src/index.ts',
+  'types/index.d.ts',
 ];
 
 const tempRoot = mkdtempSync(join(tmpdir(), 'itsa-smoke-'));
@@ -32,7 +33,7 @@ try {
       '--package',
       '@itsaorg/smoke-test',
       '--description',
-      'Smoke test scaffold from itsa-ts-blueprint',
+      'Smoke test scaffold from ts-blueprint',
       '--repo-id',
       'R99',
       '--phase',

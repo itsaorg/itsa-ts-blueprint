@@ -15,7 +15,7 @@ After token substitution and `npm install`:
 
 ## Required steps
 
-1. Create repo from `itsaorg/itsa-ts-blueprint` template
+1. Create repo from `itsaorg/ts-blueprint` template
 2. Substitute template placeholders (or use GitHub template variables)
 3. `npm install && npm run check`
 

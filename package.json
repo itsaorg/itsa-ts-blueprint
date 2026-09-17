@@ -56,12 +56,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/itsaorg/itsa-ts-blueprint.git"
+    "url": "git+https://github.com/itsaorg/ts-blueprint.git"
   },
   "bugs": {
-    "url": "https://github.com/itsaorg/itsa-ts-blueprint/issues"
+    "url": "https://github.com/itsaorg/ts-blueprint/issues"
   },
-  "homepage": "https://github.com/itsaorg/itsa-ts-blueprint#readme",
+  "homepage": "https://github.com/itsaorg/ts-blueprint#readme",
   "publishConfig": {
     "access": "public",
     "provenance": true

@@ -156,7 +156,7 @@ Configure once per npm package:
 1. **Trusted Publisher (OIDC)** — npm package → Settings → Access → Publishing access:
    - Publisher: **GitHub Actions**
    - Organization: your GitHub org (e.g. `itsaorg`)
-   - Repository: **`itsa-ts-blueprint`** (must match the GitHub repo name exactly)
+   - Repository: **`ts-blueprint`** (must match the GitHub repo name exactly)
    - Workflow file: **`publish.yml`**
    - Allowed: **stage publish** (disable direct `npm publish` if shown)
    - npm does not allow editing an existing Trusted Publisher — delete and recreate if fields are wrong.
@@ -164,7 +164,7 @@ Configure once per npm package:
 2. **Publishing access** — select **Require 2FA and allow bypass 2FA tokens**. Do **not** enable "disallow tokens" while using a stage-only granular token.
 
 3. **Stage-only granular token** — npm → Access Tokens → Granular:
-   - Name: e.g. `itsa-ts-blueprint-ci-stage`
+   - Name: e.g. `ts-blueprint-ci-stage`
    - **Bypass 2FA:** checked
    - Packages: **Read and write (stage only)**
    - Organization: read/write for your npm org
@@ -172,12 +172,21 @@ Configure once per npm package:
 4. **GitHub secret** — store the token as `NPM_TOKEN`:
 
    ```bash
-   gh secret set NPM_TOKEN --repo itsaorg/itsa-ts-blueprint
+   gh secret set NPM_TOKEN --repo itsaorg/ts-blueprint
    ```
 
 5. **Rotate tokens** — create new stage-only token → update GitHub secret → revoke old publish-capable token on npm.
 
 OIDC (Trusted Publisher) is primary auth in CI; the stage-only `NPM_TOKEN` is kept as documented fallback. Rotate every ~90 days.
+
+> **After renaming the GitHub repo**
+>
+> If the repository slug changes (e.g. `itsa-ts-blueprint` → `ts-blueprint`):
+>
+> 1. **npm Trusted Publisher** — delete the old publisher entry, recreate with Repository = `ts-blueprint`, Workflow = `publish.yml`
+> 2. **GitHub secret** — `gh secret set NPM_TOKEN --repo itsaorg/ts-blueprint`
+> 3. **GitHub template** — confirm **Settings → Template repository** is enabled on `itsaorg/ts-blueprint`
+> 4. **Verify** — push to `main` and confirm the publish workflow resolves the repo slug
 
 ### 7.2 Release flow (staged)
 

@@ -1,6 +1,6 @@
 # Contributing to **PACKAGE_NAME**
 
-Contribution standard inherited from [itsa-ts-blueprint](https://github.com/itsaorg/itsa-ts-blueprint). Follow it for human and AI agent work.
+Contribution standard inherited from [ts-blueprint](https://github.com/itsaorg/ts-blueprint). Follow it for human and AI agent work.
 
 ## 1. Prerequisites
 
@@ -40,7 +40,7 @@ Example: `feature/42-add-wal-segment`
 
 Long-lived branches: `main` (production), `develop` (integration).
 
-See the upstream [itsa-ts-blueprint CONTRIBUTING](https://github.com/itsaorg/itsa-ts-blueprint/blob/main/CONTRIBUTING.md) for full feature, bugfix, release, and hotfix commands.
+See the upstream [ts-blueprint CONTRIBUTING](https://github.com/itsaorg/ts-blueprint/blob/main/CONTRIBUTING.md) for full feature, bugfix, release, and hotfix commands.
 
 ## 4. Commits and pull requests
 
