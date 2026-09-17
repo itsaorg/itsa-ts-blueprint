@@ -8,11 +8,20 @@ This repository is currently at **seed stage**: only this guide, `LICENSE`, and 
 
 ## Table of contents
 
-- [Verified toolchain baseline](#verified-toolchain-baseline)
-- [Part 1 — How we built this template repository](#part-1--how-we-built-this-template-repository)
+- [@itsaorg/ts-blueprint](#itsaorgts-blueprint)
+  - [Table of contents](#table-of-contents)
+  - [Verified toolchain baseline](#verified-toolchain-baseline)
+  - [Part 1 — How we built this template repository](#part-1--how-we-built-this-template-repository)
   - [P1.0 Prerequisites](#p10-prerequisites)
+    - [P1.0.1 — Install Git](#p101--install-git)
+    - [P1.0.2 — Install Node.js 24.21.0](#p102--install-nodejs-24210)
+    - [P1.0.3 — Install git-flow AVH](#p103--install-git-flow-avh)
   - [P1.1 GitHub — org and base repo](#p11-github--org-and-base-repo)
   - [P1.2 GitHub — template readiness](#p12-github--template-readiness)
+    - [P1.2.1 — Issue and PR templates](#p121--issue-and-pr-templates)
+    - [P1.2.2 — CI workflow](#p122--ci-workflow)
+    - [P1.2.3 — Publish workflow](#p123--publish-workflow)
+    - [P1.2.4 — Branch protection (after first push)](#p124--branch-protection-after-first-push)
   - [P1.3 Git — local init and git-flow](#p13-git--local-init-and-git-flow)
   - [P1.4 npm — package foundation](#p14-npm--package-foundation)
   - [P1.5 TypeScript](#p15-typescript)
@@ -23,19 +32,34 @@ This repository is currently at **seed stage**: only this guide, `LICENSE`, and 
   - [P1.10 TypeDoc](#p110-typedoc)
   - [P1.11 Quality gate scripts](#p111-quality-gate-scripts)
   - [P1.12 npmjs — org and Trusted Publisher](#p112-npmjs--org-and-trusted-publisher)
+    - [P1.12.1 — npm account and org access](#p1121--npm-account-and-org-access)
+    - [P1.12.2 — Trusted Publisher (recommended)](#p1122--trusted-publisher-recommended)
+    - [P1.12.3 — GitHub repository secret (fallback)](#p1123--github-repository-secret-fallback)
+    - [P1.12.4 — Publish flow](#p1124--publish-flow)
   - [P1.13 Final verification](#p113-final-verification)
   - [P1.14 Enable template repository](#p114-enable-template-repository)
-- [Part 2 — How to use this template for your repository](#part-2--how-to-use-this-template-for-your-repository)
+  - [Part 2 — How to use this template for your repository](#part-2--how-to-use-this-template-for-your-repository)
   - [P2.0 Prerequisites](#p20-prerequisites)
   - [P2.1 GitHub — create from template](#p21-github--create-from-template)
+    - [Step 1 — Open the blueprint repository](#step-1--open-the-blueprint-repository)
+    - [Step 2 — Click Use this template](#step-2--click-use-this-template)
+    - [Step 3 — Choose Create a new repository](#step-3--choose-create-a-new-repository)
+    - [Step 4 — Configure owner, name, and visibility](#step-4--configure-owner-name-and-visibility)
+    - [Step 5 — Confirm the new repository](#step-5--confirm-the-new-repository)
   - [P2.2 Clone and install](#p22-clone-and-install)
   - [P2.3 Manual rename checklist](#p23-manual-rename-checklist)
   - [P2.4 Git and GitHub configuration](#p24-git-and-github-configuration)
+    - [P2.4.1 — Initialize git-flow (if not already configured)](#p241--initialize-git-flow-if-not-already-configured)
+    - [P2.4.2 — Ensure develop exists on GitHub](#p242--ensure-develop-exists-on-github)
+    - [P2.4.3 — Branch protection (GitHub web UI)](#p243--branch-protection-github-web-ui)
   - [P2.5 npmjs setup (if publishing)](#p25-npmjs-setup-if-publishing)
+    - [P2.5.1 — npm login and org access](#p251--npm-login-and-org-access)
+    - [P2.5.2 — Trusted Publisher for your repo](#p252--trusted-publisher-for-your-repo)
+    - [P2.5.3 — First publish checklist](#p253--first-publish-checklist)
   - [P2.6 Verify each tool](#p26-verify-each-tool)
   - [P2.7 Full quality gate](#p27-full-quality-gate)
   - [P2.8 Repository layout reference](#p28-repository-layout-reference)
-- [License](#license)
+  - [License](#license)
 
 ---
 
@@ -50,19 +74,19 @@ These versions were verified on **Windows Git Bash (MINGW64)**. Install at least
 | Git | **2.55.0.windows.5** | >= 2.55.0 | `git -v` | Prints `git version 2.55.0` or newer |
 | git-flow AVH | **1.12.4-dev0 (AVH Edition)** | AVH installed | `git flow version` | Reports AVH Edition |
 
-**Windows notes**
-
-- Use **Git Bash** (bundled with [Git for Windows](https://git-scm.com/download/win)).
-- Install Node via [nodejs.org](https://nodejs.org/), [nvm-windows](https://github.com/coreybutler/nvm-windows), or [fnm](https://github.com/Schniz/fnm).
-- Install git-flow AVH: [git-flow AVH](https://github.com/petervanderdoes/gitflow-avh/wiki/Installation).
-
-**Not required:** GitHub CLI (`gh`). All GitHub and npm Trusted Publisher steps in this guide use the **web UI**.
-
-**README images:** Static screenshots live in [`assets/readme/`](assets/readme/). TypeDoc API output goes to `docs/api/` only (gitignored) — never store README images under `docs/`.
-
+> **Windows notes**
+>
+> - Use **Git Bash** (bundled with [Git for Windows](https://git-scm.com/download/win)).
+> - Install Node via [nodejs.org](https://nodejs.org/), [nvm-windows](https://github.com/coreybutler/nvm-windows), or [fnm](https://github.com/Schniz/fnm).
+> - Install git-flow AVH: [git-flow AVH](https://github.com/petervanderdoes/gitflow-avh/wiki/Installation).
+>
+> **Not required:** GitHub CLI (`gh`). All GitHub and npm Trusted Publisher steps in this guide use the **web UI**.
+>
+> **README images:** Static screenshots live in [`assets/readme/`](assets/readme/). TypeDoc API output goes to `docs/api/` only (gitignored) — never store README images under `docs/`.
+>
 ---
 
-# Part 1 — How we built this template repository
+## Part 1 — How we built this template repository
 
 **Audience:** Maintainer rebuilding `itsaorg/ts-blueprint` from an empty repository.
 
@@ -351,13 +375,13 @@ npm pkg get name engines
 }
 ```
 
-2. Create `src/index.ts` with a sample export (e.g. `getBlueprintHealth()` returning `{ status: 'ok', package: '@itsaorg/ts-blueprint' }`).
+1. Create `src/index.ts` with a sample export (e.g. `getBlueprintHealth()` returning `{ status: 'ok', package: '@itsaorg/ts-blueprint' }`).
 
-3. Create placeholder `types/index.d.ts` (regenerated by build; keep a minimal stub for editor support before first build).
+2. Create placeholder `types/index.d.ts` (regenerated by build; keep a minimal stub for editor support before first build).
 
-4. Add to `.gitignore`: `dist/`, and `/types/*` with exceptions for `types/index.d.ts` and `types/README.md` if you add a types folder readme.
+3. Add to `.gitignore`: `dist/`, and `/types/*` with exceptions for `types/index.d.ts` and `types/README.md` if you add a types folder readme.
 
-5. Install TypeScript:
+4. Install TypeScript:
 
 ```bash
 npm install -D typescript@^5.7.2
@@ -675,7 +699,7 @@ When Part 1 is complete, this repo matches what Part 2 assumes.
 
 ---
 
-# Part 2 — How to use this template for your repository
+## Part 2 — How to use this template for your repository
 
 **Audience:** Developer creating a new TypeScript library from **Use this template** on GitHub.
 
